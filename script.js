@@ -11,6 +11,7 @@ document.querySelector("body").prepend(newHeading);
 /* LECTURE CODE*/
 let newBtn = document.createElement("button");
 let div = document.querySelector("div");
+newBtn.innerText= "CLICK ME!!"
 div.append(newBtn);
 
 
