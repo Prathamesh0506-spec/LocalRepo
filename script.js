@@ -1,4 +1,11 @@
 
+//BODY MADHE TOP LA HEDING ADD KARNE
+
+let newHeading = document.createElement("h1");
+newHeading.innerHTML = "<i>Hi i am new</i>";
+document.querySelector("body").prepend(newHeading);
+
+
 /*DOM PART 2 PRCTISE QUESTIONS*/
 /*Q.1 
 MAKE A BUTTON
@@ -15,4 +22,4 @@ document.querySelector("body").prepend(newBtn);
 
 
 
-/*Q.2
+/*Q.2*/
