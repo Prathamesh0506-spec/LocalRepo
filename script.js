@@ -9,7 +9,8 @@ document.querySelector("body").prepend(newHeading);
 
 
 /* LECTURE CODE*/
-let div = document.querySelector("#box");
+let newBtn = document.createElement("button");
+let div = document.querySelector("div");
 div.append(newBtn);
 
 
