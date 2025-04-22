@@ -5,3 +5,12 @@
     background-color: aqua;
 }
 
+.content{
+    color: aqua;
+}
+
+.newClass{
+    background-color: bisque;
+}
+
+para.classList.add("newClass");
