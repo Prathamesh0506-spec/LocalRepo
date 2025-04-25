@@ -116,3 +116,12 @@ btn1.addEventListener("click", (evt)=>{
 
 
 //REMOVING EVENT LISTENERS
+
+//BUT RUN NAHI ZALA
+
+/*let button = document.querySelector("#btn1");
+let = button.addeventListener("click", ()=>{
+    console.log("The Button was clicked");
+});
+*/
+
