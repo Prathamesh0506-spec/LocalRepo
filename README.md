@@ -20,5 +20,5 @@
 <p>LAY zhop yayaliy</p>
 <p>LAY zhop yayaliy</p>
 <p>LAY zhop yayaliy</p>
-<p>Trip Nit Hou De deva Plz.....</p>
+
 <p>Arrays Are Denger</p>
