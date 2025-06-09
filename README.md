@@ -25,3 +25,4 @@
 <p>Deva plz Plz Trip La Ghode Nako Lavu</p>
 <p>Food Poisoing Done</p>
 <p>Naldurg Trip Done</p>
+<p>Naldurg Trip Done on @9june 2025</p>
