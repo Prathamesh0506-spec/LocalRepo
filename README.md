@@ -12,6 +12,7 @@
 <p>on POE 6Th May 2015</p>
 <p>Horros of BEEE</p>
 <p>on 23Rd May 2025</p>
+<p>MANIFESATION ENDED IN BETN 20MAY TO 31MAY </p>
 <p>AFTER END SEMESTER</p>
 <p>on 7th june 2025</p>
 <p>mission infosys 6.0</p>
@@ -26,4 +27,4 @@
 <p>Naldurg Trip Done on @9june 2025</p>
 <p>Watching infosys cource</p>
 <p>Consistancy from @12June 2025</p>
-
+<p>
