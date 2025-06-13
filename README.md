@@ -26,6 +26,10 @@
 <p>on 23Rd May 2025</p>
 <p>MANIFESATION ENDED IN BETN 20MAY TO 31MAY </p>
 <p>AFTER END SEMESTER</p>
+
+/* Sachin's 241* Without Single Cover Drive
+
+*/
 <p>@ON 2ND JUNE</p>
 <p>on 7th june 2025</p>
 <p>mission infosys 6.0</p>
