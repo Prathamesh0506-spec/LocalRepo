@@ -22,6 +22,7 @@
 <p>Enjoyed Youth Parliment Event</p>
 <p>refular visit after ISE 3</p>
 <p>REPEAT TELECAST ON@ 14APRIL</P>
+<p>Read Constitution Competation @18April</p>
 <p>on POE 6Th May 2025</p>
 <p>Horros of BEEE</p>
 <p>on 23Rd May 2025</p>
