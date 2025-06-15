@@ -130,6 +130,7 @@ let = button.addeventListener("click", ()=>{
 //PRACTISE QUESTION Q.1
 //CREATE A BUTTON WHO WILL CHANGE BACKGROUND COLOUR
 
+/*
 let modeBtn = document.querySelector("#mode");
 let currMode = "light";
 
@@ -145,3 +146,4 @@ modeBtn.addEventListener("click", ()=>{
 })
 
 console.log("currMode");
+*/
