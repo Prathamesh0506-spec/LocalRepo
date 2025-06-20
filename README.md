@@ -3,7 +3,7 @@
 <p>practicing my git hub skills</p>
 <p>this is new feature</p>
 <p>By Mistake</p>
-<p>Complted Linux</p>
+<p>Complted Linux For</p>
 <p>practicing my git hub skills</p>
 <p>Hey i am back 1212</p>
 
