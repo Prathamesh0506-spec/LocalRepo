@@ -35,7 +35,7 @@
 <p>Horros of BEEE</p>
 <p>on 23Rd May 2025</p>
 <p>MANIFESATION ENDED IN BETN 20MAY TO 31MAY </p>
-<p>
+<p></p>
 <p>Enjoyed This Semester</p>
 <p>AFTER END SEMESTER</p>
 
