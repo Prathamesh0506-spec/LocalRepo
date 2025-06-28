@@ -60,7 +60,7 @@
 <p>Naldurg Trip Done on @9june 2025</p>
 <p>Watching infosys cource</p>
 <p>Consistancy from @12June 2025</p>
-<p>DEVA
+
 
 <p>Consistancy from @13June 2025</p>
 <p>Started LinkdList</p>
