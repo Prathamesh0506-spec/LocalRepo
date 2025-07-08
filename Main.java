@@ -147,3 +147,58 @@ public class Main {
     }
 
  */
+
+
+
+
+
+ /**********REVERSE STRING BY USING STK PROGRAMM***********/
+ /*
+  import java.util.Scanner;
+
+class stackrev {
+
+    String stk;
+    String rev;
+    char n;
+    int top = -1, k = 0;
+
+    //LOGIC FOR PUSH function
+    public void push(char n) {
+        if (top == 10) {
+            System.out.println("STACK-OVERFLOW");
+        } else {
+            top++;
+            stk = stk + n;
+            //stk.charAt(top)=n;
+        }
+    }
+
+    //LOGIC FOR pop
+    public void pop() {
+        rev = rev + stk.charAt(top--);
+        k++;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name;
+        System.out.println("Enter A Name\n");
+        name = sc.next();
+        stackrev obj = new stackrev();
+
+        //LOGIC FOR PUSHING IN METHOD
+        for (int i = 0; i < name.length(); i++) {
+            obj.push(name.charAt(i));
+        }
+        //LOGIC FOR PUSHING IN POP
+        for (int i = 0; i < name.length(); i++) {
+            obj.pop();
+
+        }
+        System.out.println("The original Name is %s\n" + obj.stk);
+        System.out.println("The Reversed Name is %s\n" + obj.rev);
+    }
+}
+
+  */
