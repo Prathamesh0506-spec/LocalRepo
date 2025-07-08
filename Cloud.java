@@ -1,5 +1,1 @@
-package LocalRepo;
-
-public class Cloud {
-    
-}
+/* JAVA PROGRAMS FILE FOR CLOUD */
