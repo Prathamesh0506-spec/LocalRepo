@@ -67,3 +67,53 @@ void Display(){
 }
 
 
+
+
+/**********CONVERT DECIMAL -> BINARY PROGRAMM***********/
+#include <stdio.h>
+#include <stdlib.h>
+
+int stk[11];
+int top = -1;
+int idx;
+int main()
+{
+    int num,rem;
+    printf("Enter A Number\n");
+    scanf("%d", &num);
+    //WHILE
+    while(num != 0){
+        rem = num%2;
+        push(rem);
+        num = num/2;
+    }
+    //LOOPING
+        idx = top;
+    for(int i = 0; i<= idx; i++){
+        pop();
+    }
+    return 0;
+}
+
+//LOGIC FOR PUSH FUNCTION
+void push(int n){
+
+    if(top == 10){
+        printf("STACK-OVERFLOW");
+    }
+    else{
+        top++;
+        stk[top] = n;
+    }
+}
+//LOGIC FOR POP FUNCTION
+void pop (){
+    if(top == -1){
+        printf("UNDERFLOW");
+    }
+    else{
+        printf("%d\n", stk[top]);
+        top--;
+
+    }
+}
