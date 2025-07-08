@@ -121,6 +121,7 @@ void pop (){
 
 
 
+
 /**********REVERRSE STRING BY STACK PROGRAMM***********/
 #include <stdio.h>
 #include <stdlib.h>
@@ -170,4 +171,87 @@ void pop (){
     rev[k]=stk[top--];
     k++;
 }
+
+
+
+
+/**********LL_BY_USING_STk***********/
+#include <stdio.h>
+#include <stdlib.h>
+//STRUCTURE FOR CREATING NODE
+struct Node{
+int data;
+int *ptr;
+};
+
+struct Node *top = NULL, *temp,*first;
+
+int main(){
+int ch,n;
+    while(1){
+        printf("Enter Choices 1.insert\t 2.Delete\t 3.Display\t");
+        scanf("%d", &ch);
+        switch(ch){
+
+        case 1:
+        printf("Enter A Number\t");
+        scanf("%d", &n);
+        push(n);
+        break;
+
+        case 2: pop();
+        break;
+
+        case 3: Display();
+        break;
+
+        case 4: exit(0);
+        break;
+        }
+    }
+
+    return 0;
+}
+
+//LOGIC FOR PUSH FUCNN
+void push(int n){
+    struct Node *newnode;       //ek node create honar
+    newnode = (struct Node*)malloc(sizeof(struct Node));  //memory allocation
+    newnode -> data = n;
+    newnode -> ptr = top;
+    //ASSING TOP
+    top = newnode;
+    printf("%d",top->data);
+}
+
+
+//LOGIC FOR DISPLAY
+void Display(){
+struct Node *temp = top;
+    if(top == NULL){
+        printf("EMEPTY");
+    }
+    else{
+        while(temp != NULL){
+            printf("%d\t", temp->data);
+            temp = temp->ptr;    //POINTING TO NEXT NODE'S ADRESSS
+        }
+    }
+}
+
+//LOGIC FOR POP
+void pop(){
+struct Node *temp;
+   if (top == NULL) {
+        printf("Underflow: Stack is empty\n");
+        return;  // Exit if the stack is empty
+    }
+
+        printf("Item %d popped from stack\n", top->data);
+        temp=top;
+        top=top->ptr;
+        free(temp);
+}
+
+
 
