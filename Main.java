@@ -84,3 +84,66 @@ public class Main {
 
 
 */
+
+
+
+
+
+/**********DECI -> BINARY BY USING STK PROGRAMM***********/
+/*
+    import java.util.Scanner;
+
+
+public class Main {
+
+    static int[] stk = new int[11]; // ✅ Java array syntax
+    static int top = -1;
+
+    //LOGIC FOR PUSH FUNCTION
+    public void push(int n){
+        if (top == 10){
+            System.out.println("OVER-FLOW");
+        }
+        else {
+            top++;
+            stk[top] = n;
+        }
+    }
+
+
+    //LOGIC FOR POP FUNCTION
+    public void pop(){
+        if (top == -1){
+            System.out.println("UNNDER-FLOW");
+        }
+        else {
+            System.out.println("\n" + stk[top]);
+            top--;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner sc  = new Scanner(System.in);
+
+        Main obj = new Main();
+
+        int num,rem;
+        System.out.println("Enter A NUmber\n");
+        num = sc.nextInt();
+
+        //LOGIC
+        while (num !=0){    //JOPARYNAT N ZERO HOT NAHI
+            rem = num%2;    //REMAINDER HECH TAR CONVERSION ASTY MHANUN REM PUSH MADHE GHATILI
+            obj.push(rem);
+            num = num/2;
+        }
+        //LOGIC FOR POP IN MAIN
+        int idx = top;      //TOP ADKUN RAHU NAYE MHANUN
+        for (int i =0; i<=idx; i++){
+            obj.pop();
+        }
+    }
+    }
+
+ */
