@@ -1063,3 +1063,124 @@ for(int i= 0; i<=rear; i++)
     }}
 
 
+
+
+
+/***********~~LEGENDARY_QUESTION ~~************/
+
+/***********->
+                PRIORITY_QUEUE ->/***********/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int priority_queue[11];
+int f = -1;
+int r = -1;
+int size = 11;
+
+// Function declarations
+void insert(int);
+void del(int);
+void check(int);
+void display();
+
+void main() {
+    int n, ch;
+    while (1) {
+        printf("\n\n1. Insert");
+        printf("\n2. Delete");
+        printf("\n3. Display");
+        printf("\n4. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &ch);
+
+        switch (ch) {
+            case 1:
+                printf("Enter a number: ");
+                scanf("%d", &n);
+                insert(n);
+                break;
+            case 2:
+                printf("Enter a number to delete: ");
+                scanf("%d", &n);
+                del(n);
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                exit(0);
+                break;
+            default:
+                printf("Entered wrong option\n");
+        }
+    }
+}
+
+void insert(int data) {
+    if (r >= size - 1) {
+        printf("Queue is full\n");
+        return;
+    }
+
+    if ((f == -1) && (r == -1)) {
+        f++;
+        r++;
+        priority_queue[r] = data;
+        return;
+    } else {
+        check(data);
+        r++;
+    }
+}
+
+void check(int data) {
+    int i, j;
+    for (i = 0; i <= r; i++) {
+        if (data >= priority_queue[i]) {
+            for (j = r + 1; j > i; j--) {
+                priority_queue[j] = priority_queue[j - 1];
+            }
+            priority_queue[i] = data;
+            return;
+        }
+    }
+    priority_queue[i] = data;
+}
+
+void del(int data) {
+    int i;
+    if ((f == -1) && (r == -1)) {
+        printf("\nQueue is empty\n");
+        return;
+    }
+
+    for (i = 0; i <= r; i++) {
+        if (data == priority_queue[i]) {
+            for (; i < r; i++) {
+                priority_queue[i] = priority_queue[i + 1];
+            }
+            priority_queue[i] = -99;
+            r--;
+            if (r == -1) {
+                f = -1;
+            }
+            return;
+        }
+    }
+    printf("%d not found in queue", data);
+}
+
+void display() {
+    if ((f == -1) && (r == -1)) {
+        printf("\nQueue is empty");
+        return;
+    }
+
+    printf("\nPriority Queue: ");
+    for (int i = f; i <= r; i++) {
+        printf("%d ", priority_queue[i]);
+    }
+}
