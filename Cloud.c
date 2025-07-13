@@ -450,3 +450,9 @@ void emepty(){
         printf("\n Queue Is Not emepty");
 }
 */
+
+
+
+
+/********** SUM OF ELEMENTS OF QUEUE ************/
+
