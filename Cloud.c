@@ -264,3 +264,69 @@ struct Node *temp;
 
 /********************************************-> UNIT-QUEUE <-********************************************/
 
+
+/**********QUEUE BASIC PROGRAMM BY ARRAY***********/
+#include <stdio.h>
+#include <stdlib.h>
+
+int que[6];
+int front = -1;
+int rear = -1;
+int ch,n;
+int size =6;
+void main()
+{
+
+    do{
+        printf("Enter Operation\t 1.insert\n  2.del\n  3.Display\n 4.Exit\n\n");
+        scanf("%d", &ch);
+        //
+        switch(ch){
+            case 1:
+            printf("Enter Element");
+            scanf("%d", &n);
+            insert(n);
+            break;
+
+            case 2: del();
+                break;
+
+            case 3: Display();
+            break;
+
+            case 4: exit(0);
+        }
+    }
+    while(ch<=4 && ch>=1);
+}
+
+void insert(int n){
+    if(rear == size-1){     //MEANS LAST IDX LA AHE
+        printf("Queue Is Full\n");
+    }
+    else{
+            if(front == -1){
+                front++;
+            }
+        rear++;
+        que[rear] = n;
+        printf("%d is inserted\n", n);
+    }
+}
+
+void del(){
+    if(front == -1 && rear == -1 || front == rear+1){
+        printf("Queue Is Emepty\n");
+    }
+    else{
+        printf("%d is Deleted\n", que[front]);
+        front++;
+    }
+}
+
+void Display(){
+    for(int i = front; i<=rear; i++){
+        printf("%d\t", que[i]);
+    }
+}
+
