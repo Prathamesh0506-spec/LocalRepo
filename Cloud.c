@@ -728,3 +728,338 @@ do{
 }
 
 
+
+
+
+
+/**************_IMP_DOUBLE_ENDED_QUEUE_************/
+#include <stdio.h>
+#include <stdlib.h>
+#define Size 6
+//SOME GLOBAL DECLERATIONS
+int double_EndQue[Size];
+int front = -1;
+int rear = -1;
+
+//FUNC-INSERT @T REAR
+void insert_rear(){
+    int added_item;
+    if((front == 0 && rear == Size-1) ||(front == rear+1)){
+        printf("Queue Overflow\n");
+        return;
+    }
+    if(front == -1){
+        front = 0;
+        rear = 0;
+    }
+       else{
+            //CIRCULAR LINKING CHI CONDTION
+            if(rear == Size-1){
+                rear = 0;
+            }
+            else{
+                rear = rear+1;
+            }
+       }
+       printf("Input the element for adding in queue : ");
+           scanf("%d", &added_item);
+           double_EndQue[rear] = added_item;
+}
+
+//FUNC-INSERT @T FRONT
+void insert_front(){
+    int added_item;
+    if((front == 0 && rear == Size-1) || (front == rear+1)){
+        printf("Queue Overflow \n");
+        return;
+    }
+    if (front == -1){
+        front = 0;
+        rear = 0;
+    }
+    else{
+        //ULTA CHALNAR AHE FRONT IN THIS FUNCTION
+        //SO ULTI CIRCULAR LINKAGE LAVNE
+        if(front== 0)
+            front=Size-1;
+        else
+            front = front-1;    //-> ULTI CHALAYCHI CONDITION
+        printf("Input the element for adding in queue : ");
+        scanf("%d", &added_item);
+        double_EndQue[front] = added_item;
+    }
+}
+
+//**********DELETE SATHI CHE 2 FUNCTIONS**********//
+
+//FUNNCT DELETE FROM @REAR
+void delete_rear(){
+   //CORNER CASE #1
+    if (front == -1)
+    {
+        printf("Queue Underflow\n");
+        return ;
+    }
+    printf("Element deleted from queue is : %d\n",double_EndQue[rear]);
+    if(front == rear){
+    //SPECIAL-CORNER CASE
+    //-> *queue has only one element ani jar aapn delete option dablo*
+        front = -1;
+        rear=-1;
+    }
+    else{
+    //ULTI CHALAYACHI CONDITION
+        if(rear == 0){
+            rear = Size-1;
+        }
+    else{
+     rear = rear-1;
+    }
+}
+}
+
+//FUNCTION DELETE FROM FRONT -->(NORMAL DELETION)//
+void delete_front()
+{   if (front == -1)
+    {   printf("Queue Underflow\n");
+        return ;
+    }
+    printf("Element deleted from queue is : %d\n",double_EndQue[front]);
+    if(front == rear) /*Queue has only one element */
+    {   front = -1;
+        rear=-1;
+    }
+    else
+        if(front == Size-1)
+            front = 0;
+        else
+            front = front+1;
+}
+
+//****LOGIC && SWITCH CASES FOR INPUT-RESTRICTION FUNCTION****//
+void input_Restrict(){
+//HYAT INSERT FAKT 1KA SIDE NE HONAR
+int option;
+do{
+    printf("1.Insert at rear\n");
+    printf("2.Delete from front\n");
+    printf("3.Delete from rear\n");
+    printf("4.Display\n");
+    printf("5.Quit\n");
+    printf("Enter your choice : ");
+    scanf("%d",&option);
+
+    switch(option){
+        case 1:
+            insert_rear();
+            break;
+         case 2:
+            delete_front();
+            break;
+         case 3:
+            delete_rear();
+            break;
+         case 4:
+            display_double_EndQue();
+            break;
+         case 5:
+            break;
+         default:
+            printf("Wrong choice\n");
+    }
+}
+while(option!=5);
+}
+
+//THE GRAND DISPLAY-FUNCTION//
+void display_double_EndQue(){
+ int f_pos = front,r_pos = rear;
+    //CORNER CASE #1
+    if(front == -1)
+    {   printf("Queue is empty\n");
+        return;
+    }
+    //NORMAL PRINTING
+    printf("Queue elements :\n");
+    if(f_pos <= r_pos){
+        while(f_pos <= r_pos){
+            printf("%d ",double_EndQue[f_pos]);
+            f_pos++;
+        }
+    }
+    else{
+        //SPECIAL CASE 2
+        while(f_pos <= Size-1)
+        {   printf("%d ",double_EndQue[f_pos]);
+            f_pos++;
+        }
+        //CIRCULAR CONDITION
+        f_pos = 0;
+        while(f_pos <= r_pos){
+            printf("%d", double_EndQue[f_pos]);
+            f_pos++;
+        }
+    }
+    printf("\n");
+}
+
+
+//****SWITCH CASES FOR OUTPUT-RESTRICTION****//
+void output_Restrict(){
+    //HYAT DELETE FAKT 1KA SIDE NE HONAR
+    int opt;
+    do{
+        printf("1. Insert from rear\n");
+        printf("2. Insert from Front\n");
+        printf("3. Delete from Front\n");
+        printf("4. Display\n");
+        printf("5.Quit\n");
+        printf("Enter a Option\n");
+        scanf("%d", &opt);
+        switch(opt){
+        case 1:
+            insert_rear();
+            break;
+         case 2:
+            insert_front();
+            break;
+         case 3:
+            delete_front();
+            break;
+         case 4:
+            display_double_EndQue();
+            break;
+         case 5:
+            break;
+         default:
+            printf("Wrong choice\n");
+        }
+    }
+    while(opt != 5);
+}
+
+//APLA MAIN FUNCT
+int main()
+{
+    int choice;
+    printf("1. INPUT-RESTRICTED QUEUE\n");
+    printf("2. OUTPUT-RESTRICTED QUEUE\n");
+    printf("ENTER YOUR CHOICE\n");
+    scanf("%d", &choice);
+    switch(choice){
+    case 1: input_Restrict();
+    break;
+
+    case 2: output_Restrict();
+    break;
+
+    default:
+        printf("Bro Wrong Choice!!");
+    }
+}
+
+
+
+
+/**************CIRCULAR QUEUE AS ARRAY**********/
+#include <stdio.h>
+#include <stdlib.h>
+
+int que[6];
+int front = -1;
+int rear = -1;
+int ch,n;
+int size =6;
+int insert(int);
+int main()
+{
+    do{
+        printf("Enter Operation\t 1.insert\n  2.del\n  3.Display\n 4.Exit\n\n");
+        scanf("%d", &ch);
+        //
+        switch(ch){
+            case 1:
+            
+            printf("Enter Element");
+            scanf("%d", &n);
+            insert(n);
+            break;
+
+            case 2: del();
+                break;
+
+            case 3: Display();
+            break;
+
+            case 4: exit(0);
+        }
+    }
+    while(ch<=4 && ch>=1);
+    return 0;
+}
+
+
+//LOGIC FOR INSERTION
+int insert(int n){
+    if(((rear == size-1 && front == 0 )||(front==rear+1))){     //TRADITONL COND
+        printf("Queue Is Full\n");
+    }
+    else{
+            if(front == -1)
+                front=0;
+
+
+            if(rear == size-1)
+                rear =0;
+
+else
+                rear++;
+
+        que[rear] = n;
+        printf("%d is inserted\n front =%d\t rear =%d\t", n,front,rear);
+    }
+}
+
+
+void del(){
+    int n;
+    if(front==-1)
+    {
+        printf("queue is empty");
+    }
+    else{
+    printf("%d is deleted",que[front]);
+    if(front==rear)
+        front=rear=-1;
+    else if(front==size-1)
+        front=0;
+    else front++;
+}
+}
+
+
+
+void Display(){
+    if(front==-1)
+    {
+        printf("queue is empty");
+    }
+    else{
+    printf("Queue elements are\n");
+
+if(front<=rear ){
+        for(int i = front; i<=rear; i++)
+        printf("%d\t", que[i]);
+}
+else{
+
+for(int i = front; i<size; i++)
+        printf("%d\t", que[i]);
+
+for(int i= 0; i<=rear; i++)
+        printf("%d\t", que[i]);
+
+    }
+    }}
+
+
