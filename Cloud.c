@@ -335,3 +335,118 @@ void Display(){
 
 
 /**********QUEUE AS LINKED-LIST********/
+#include <stdio.h>
+#include <stdlib.h>
+
+//NODE CREATION THROUGH QUEUE
+struct Node{
+int data;
+struct Node *next;
+};
+struct Node *front = NULL, *rear = NULL, *temp, *t;
+
+
+void enque(int );
+void deque();
+void display();
+
+
+void main()
+{
+int no, ch, c;
+printf("\n enter to insert");
+printf("\n delete");
+printf("\n display");
+printf("\n exit");
+//front=rear=NULL;
+
+while(1){
+        printf("\n Enter Your Choice");
+        scanf("%d", &ch);
+
+    switch(ch){
+    case 1:
+        printf("\nEnter data");
+        scanf("%d", &no);
+        enque(no);
+        break;
+
+        case 2: deque();
+        break;
+
+        case 3: display();
+        break;
+
+        case 4:
+            exit(0);
+            break;
+
+            default: printf("You Entered Wrong Choice\n");
+            break;
+    }
+}
+}
+
+
+void enque(int n){
+if(rear == NULL){       //JAR QUEUE EMEPTY ASEL TAR 1St Node Sathi
+    rear = (struct Node *)malloc(sizeof(struct Node));
+    rear -> next = NULL;
+    rear -> data = n;
+    front = rear;
+    }
+
+    else{     //JAR AADHICH KAY TAR PRESENT ASEL TAR
+
+    temp = (struct Node *)malloc(sizeof(struct Node));
+    rear -> next = temp;
+    temp -> data = n;
+    temp -> next = NULL;
+    rear = temp;
+
+    }
+}
+
+void display(){
+t = front;      //JAR 1ST CH ELEMENT NASEL TAR
+if((t == NULL) && (rear == NULL)){
+    printf("QUEUE IS EMEPTY");
+    return;
+}
+
+while(t!= NULL){
+    printf("%d\t", t-> data);
+    t = t-> next;
+}
+}
+
+void deque(){
+    t = front;      //JAR 1ST CH ELEMENT PRESENT NASEL TAR
+    if(t == NULL){
+        printf("\n emepty queue");
+        return;
+    }
+    else
+        if(t ->next !=NULL){        //TRAVSERSAL KARUN DELETE KARNE
+        t = t-> next;
+        printf("\n deque value : %d", front -> data);
+        free(front);
+        front = t;
+    }
+    else{           //JAR AAPN 1ST CH ELEMNET DELETE KELA
+        printf("\n Deque value %d", front->data);
+        free(t);
+        front = NULL;
+        rear = NULL;
+    }
+}
+
+
+/*
+void emepty(){
+    if((front == NULL) && (rear == NULL))
+        printf("\n Queue Is Emepty");
+    else
+        printf("\n Queue Is Not emepty");
+}
+*/
