@@ -544,3 +544,187 @@ do{
         while(ch<=4 && ch>=1);
 }
 
+
+
+
+
+
+/********** NO OF ELEMENTS OF QUEUE************/
+#include <stdio.h>
+#include <stdlib.h>
+
+int que[10];
+int count = 0;
+int rear = -1;
+int front = -1;
+int ch,n;
+int size = 10;
+
+void enque(int n){
+    //FULL ASTANACHI CONDITION
+    if(rear == size-1){
+        printf("Queue Is Full\n");
+    }
+    else{
+        //KIND OF EMEPTY ASTANACHI CONDITION
+        if(front == -1){
+            front++;      //FRONT LA 1ST IDX LA LAVUN GHETLA
+        }
+        rear++;
+        que[rear] = n;
+        printf("%d is inserted\n", n);
+        count++;
+        printf("Total Elem In Currrent Situation are%d\t\n", count);
+    }
+
+}
+
+//LOGIC FOR DELETE
+void deque(){
+    if(front == -1 && rear == -1 || front == rear+1){
+       printf("Queue Is Emepty\n");
+    }
+    else{
+        printf("%d is deleted\n", que[front]);
+        front++;
+        count--;
+        printf("Total Elem In Currrent Situation are%d\t\n", count);
+    }
+
+}
+
+//LOGIC FOR DISPLAY
+
+void Display(){
+    for(int i = front; i<=rear; i++){
+        printf("%d\t", que[i]);
+    }
+    printf("Total Elem In Currrent Situation are%d\t", count);
+}
+
+
+void main()
+{
+do{
+    printf("Enter Operation\t 1.insert\n  2.del\n  3.Display\n 4.Exit\n\n");
+    scanf("%d", &ch);
+    //
+        switch(ch){
+            case 1:
+            printf("Enter Element");
+            scanf("%d", &n);
+            enque(n);
+            break;
+
+            case 2: deque();
+                break;
+
+            case 3: Display();
+            break;
+
+            case 4: exit(0);
+        }
+    }
+        while(ch<=4 && ch>=1);
+}
+
+
+
+
+
+/********** MAXIMUM ELEMENTS OF QUEUE************/
+#include <stdio.h>
+#include <stdlib.h>
+
+int que[6];
+int count = 0;
+int rear = -1;
+int front = -1;
+int ch,n;
+int size = 10;
+int max = 0;
+
+void enque(int n){
+    //FULL ASTANACHI CONDITION
+    if(rear == size-1){
+        printf("Queue Is Full\n");
+    }
+    else{
+        //KIND OF EMEPTY ASTANACHI CONDITION
+        if(front == -1){
+            front++;      //FRONT LA 1ST IDX LA LAVUN GHETLA
+        }
+        rear++;
+        que[rear] = n;
+        printf("%d is inserted\n", n);
+        count++;
+        printf("Total Elem In Currrent Situation are%d\t\n", count);
+        }
+    }
+
+
+
+//LOGIC FOR DELETE
+void deque(){
+    if(front == -1 && rear == -1 || front == rear+1){
+       printf("Queue Is Emepty\n");
+    }
+    else{
+        printf("%d is deleted\n", que[front]);
+        front++;
+
+        printf("Total Elem In Currrent Situation are%d\t\n", count);
+        //LOGIC FOR MAXIMUM ELEM OF QUE
+
+    }
+}
+
+//LOGIC FOR DISPLAY
+void Display(){
+    for(int i = front; i<=rear; i++){
+        printf("%d\t", que[i]);
+    }
+    printf("Total Elem In Currrent Situation are%d\t", count);
+
+}
+
+
+void maximumElm(){
+    max = que[front];
+    for(int i = front+1; i<= rear; i++){
+        if(max<que[i]){
+            max = que[i];
+        }
+    }
+    printf("Maximum elem in curr situation is %d\n", max);
+}
+
+void main()
+{
+do{
+    printf("Enter Operation\t 1.insert\n  2.del\n  3.Display\n  4.maximumElm\n  5.Exit\n\n");
+    scanf("%d", &ch);
+    //
+        switch(ch){
+            case 1:
+            printf("Enter Element");
+            scanf("%d", &n);
+            enque(n);
+            break;
+
+            case 2: deque();
+                break;
+
+            case 3: Display();
+            break;
+
+            case 4: maximumElm();
+            break;
+
+            case 5: exit(0);
+        }
+    }
+        while(ch<=4 && ch>=1);
+}
+
+
