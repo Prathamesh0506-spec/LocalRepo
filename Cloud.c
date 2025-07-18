@@ -259,7 +259,7 @@ struct Node *temp;
 
 
 
-/*****************************->->->->->-> ADDITION POLYNOMIALS BY USING <-<-<-<-<-<-<-******************************** */
+/*****************************->->->->->-> ADDITION POLYNOMIALS BY USING_LINKED_LIST<-<-<-<-<-<-<-******************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
