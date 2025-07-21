@@ -201,4 +201,67 @@ class stackrev {
     }
 }
 
+
+
+
+
+
+
+/****************************SEPERATE DIGITS OF NUMBER BY USING STACK*********************** */
+/* 
+import java.util.Scanner;
+
+
+public class Main {
+    int[] stk = new int[11]; // Stack of size 11
+    int top = -1;
+
+
+    //LOGIC FOR PUSH-METHOD
+    public void Push(int num){
+        // CORNER CASE
+        if (top == 10){
+            System.out.println("OVER-Flow");
+        }
+        else {
+            top++;
+            stk[top] = num;
+        }
+    }
+
+    //LOGIC FOR POP-METHOD
+
+    public void Pop(){
+        //corner Case
+        if(top == -1){
+            System.out.println("UNDER-FLOW\n");
+        }
+
+        else{
+            System.out.println("Digits of the number are:\n");
+            while(top != -1){
+                System.out.println(stk[top]);
+                top--;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+            Main obj = new Main();  //MAIN LA LINK KARUN GHENE
+
+        //TAKING NUMBER INPUT
+        System.out.println("Enter A Number\n");
+        int num = sc.nextInt();
+
+        //LOGIC TO SEPERATE DIGITS
+        while (num>0){
+           int digit = num%10;
+           obj.Push(digit);
+            num = num / 10;
+        }
+        obj.Pop();
+    }
+}
+
   */
