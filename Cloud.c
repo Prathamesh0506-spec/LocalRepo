@@ -1318,3 +1318,198 @@ void display() {
 
 
 /**********************************--------->UNIT LINKED_LIST<---------****************************** */
+
+
+
+
+/****************LINKED LIST ALL OPERATION'S***************** */
+#include <stdio.h>
+#include <stdlib.h>
+
+//NODE CREATION AND USING IN FUNCTION
+struct node{
+    int info;
+    struct node *link;
+};
+struct node *start = NULL;
+
+// FUNCTION-INSERT AT FRONT
+void insertAtFront(){
+    int data;
+    struct node *temp;  //EK NODE CREATE KELA
+    temp = malloc(sizeof(struct node));
+    printf("\n enter a number to be inserted");
+    scanf("%d", &data);
+
+    temp->info = data;      //DATA ENTER ZALA
+    temp ->link = start;       //LINK LAGLI
+    start = temp;
+}
+
+//FUNCTION INSERT @T END
+void insertAtEnd(){
+    int data;
+    struct node *temp, *head;
+    temp = malloc(sizeof(struct node));
+    printf("\n enter a number to be entered\n");
+    scanf("%d", &data);
+    //CORNER CASE
+    if(start == NULL){
+        temp->info = data;
+        temp ->link = start;
+        start = temp;
+    }
+    else{
+      temp ->link = NULL;
+      temp->info = data;
+      head = start;
+      while(head->link !=NULL){
+        head = head->link;
+      }
+      head->link = temp;
+    }
+}
+
+//FUNCTION INSERT @T ANY POSITION
+void insertAtposition(){
+    struct node *temp, *newnode;
+    //POSTION INPUT GHENE
+    int pos, data, i=1;     //1 POSTION GHETLA
+    //CORNER CASE
+    if(start == NULL){
+        printf("\n list is emepty");
+    }
+    else{
+        //NAVIN POSITION SATHI NAVIN NODE & NAVIN LINKAGE
+        newnode = malloc(sizeof(struct node));
+        printf("Enter A value");
+        scanf("%d", &data);
+        //TAKING INPUT OF POSITION
+        printf("Enter A position");
+        scanf("%d", &pos);
+        //HEAD LA STORE KARUN GHENE
+        temp = start;
+        newnode->info = data;
+        newnode->link = NULL;
+        //
+        while(i<pos-1){
+            temp = temp->link;
+            i++;
+        }
+    }
+    newnode->link = temp->link;
+    temp->link = newnode;
+}
+
+//FUNCTION DELETE 1ST
+void deleFirst(){
+    struct node *temp;
+    //CORNER CASE
+    if(start == NULL){
+        printf("\n list  is emepty");
+    }
+    else{
+        temp = start;   //start store karun ghetla
+        start = start->link;
+        free(temp);     //memory free karayala
+    }
+}
+
+//FUNCTION DELETE END
+void deleteEnd(){
+    struct node *temp, *prevnode;
+    if(start == NULL){
+        printf("\n list is emepty");
+    }
+    else if(start->link !=NULL){
+        temp = start;
+        //TRAVERSAL CONDITION
+        while(temp->link != NULL){
+            prevnode = temp;
+            temp = temp->link;
+        }
+        free(temp);
+        prevnode->link = NULL;
+    }
+    else if(start->link = NULL){
+        start = NULL;
+    }
+}
+
+//FUNCTION DELETE @t POSITION
+void delAtPos(){
+    struct node *temp, *position;
+    int i =1,pos;
+    //CORNER CASE
+    if(start == NULL){
+        printf("\n list is emepty");
+    }
+    else{
+        //TAKING POSTION TO BE DELETED
+        printf("Enter position\n");
+        scanf("%d", &pos);
+        position = malloc(sizeof(struct node));
+        //TRAVSERSAL SATHI
+        temp = start;
+        while(i<pos-1){
+            temp = temp->link;
+            i++;
+        }
+        position = temp->link;
+        temp->link = position->link;     //ACTUAL DELETEION CONDITION
+        free(position);
+    }
+}
+
+//DISPLAYB FUNCTION
+void display(){
+    struct node *temp;
+    if(start == NULL){
+        printf("The list is emepty\n");
+    }
+    else{
+    //TRAVERSAL CONDITION
+    temp = start;
+    while(temp!=NULL){
+        printf("%d-", temp->info);
+        temp = temp->link;
+    }
+    }
+}
+int main()
+{
+    int choice;
+    while(1){
+        printf("Enter a choice 1.insertAtFront\t 2.insertAtEnd\t 3.insertAtposition\t 4.deleFirst\t 5.deleteEnd\t 6.delAtPos\t 7.display\t \n");
+        scanf("%d", &choice);
+        switch(choice){
+
+        case 1: insertAtFront();
+        break;
+
+        case 2: insertAtEnd();
+        break;
+
+        case 3: insertAtposition();
+        break;
+
+        case 4: deleFirst();
+        break;
+
+        case 5: deleteEnd();
+        break;
+
+        case 6: delAtPos();
+        break;
+
+        case 7:display();
+        break;
+
+        case 8: exit(0);
+        break;
+
+        default :printf("You have entered wrong choice");
+        }
+    }
+    return 0;
+}
