@@ -16,134 +16,335 @@ div.append(newBtn);
 
 */
 
-/*DOM PART 2 PRCTISE QUESTIONS*/
-/*Q.1 
-MAKE A BUTTON
-CLICK ME !!
-*/
 
-/*let newBtn = document.createElement("button");
-newBtn.innerText = "click me!!";
-
-newBtn.style.color = "white";
-newBtn.style.backgroundColor = "red";
-
-document.querySelector("body").prepend(newBtn);
-
-*/
-
-/*Q.2*/
-
-
-
-
-
-
-
-
-
-
-/************************************************EVENTS**************************************/
-
-/*btn1.onclick = ()=>{
-    console.log("the button was clicked");
-    let a = 25;
-    a++;
-    console.log(a);
-}*/
-
-
-
-
-
+/*let div = document.querySelector("box1");*/
 
 /*let div = document.querySelector("box1");
-div.mouseover = ()=>{
-    console.log("you are inside");
-}*/
+console.log(div);
+let id = div.getAttribute("class");
+console.log(id);
+*/
+
+    
+
+/*-------> DOM NE STYLES CHNAGE KARNE <-------*/
+
+/*let div = document.querySelector("#box");
+div.style.backgroundcolour = "pink";
+div.style.fontsize = "26px";
+div.innerText = "Hellow !";
+*/
 
 
 
+/*------->ADDING NEW ELEMENT BY USING DOM<-------*/
+/*let anna = document.querySelector("box");
+anna.append(newBtn);
 
-
-//TO PRINT EVENT OBEJCT
-/*btn1.onclick = (evt)=>{
-    console.log(evt);
-    console.log(evt.type);
-}*/
-
-
-
-
-
-/***************************EVENTS LISTENER'S**************************************/
-
-/*let btn = document.querySelector("#btn1");
-btn.addEventListener("click", ()=>{
-    console.log("THE BUTTON WAS CLICKED");
-})*/
-
-
-
-//2 EVENTS AT  THE SAME TIME
-/*let btn = document.querySelector("#btn1");
-btn.addEventListener("click", ()=>{
-    console.log("THE BUTTON WAS CLICKED");
-})
-
-
-btn1.addEventListener("click", ()=>{
-    console.log("Handler 2");
-})
+let newHeading = document.createElement("h1");
+newHeading.innerHTML = "PATA HAI HUM MATCH KAHA HARE";
+document.querySelector("body").prepend(newHeading);
 */
 
 
 
 
-//ACCESING EVENT OBEJ BY USING EVENT LISTENERS
-/*let btn1 = document.querySelector("#btn1");
 
-btn1.addEventListener("click", (evt)=>{
-    console.log("handler 1");
+/*------->PRACTISE QUESTION 1<-------*/
+/*let div = document.querySelector("pQ");
+
+let newBtn = document.createElement("button");
+newBtn.innerHTML = "<i>THIS IS BTN</i>";
+newBtn.innerText = "CLICK ME !!";
+newBtn.style.backgroundColor = "red";
+newBtn.style.color = "white";
+document.querySelector("body").prepend(newBtn);*/
+
+
+
+
+
+/*--EVENT'S*/
+/*let elem = document.querySelector("#btn1");
+
+elem.onclick = ()=>{
+    console.log("Button was clicked");
+    var a = 12;
+    a++;
+    console.log(a);
+}
+
+let div = document.querySelector(".box2");
+div.onmouseover = ()=>{
+    console.log("you're inside div");
+};
+
+elem.onclick = (evt) =>{
     console.log(evt);
     console.log(evt.type);
-    console.log(evt.clientX,evt.clientY);
-})*/
+}*/
 
 
 
+/*let btn = document.querySelector("#btn1");
+
+btn.addEventListener("click", ()=>{
+    console.log("Button Was Clicked");
+});
+
+btn.addEventListener("click", ()=>{
+    console.log("Handler 2");
+});
+
+const Handler3 = ()=>{
+    console.log("Handler 3");
+};
+
+btn.addEventListener("click", Handler3);
+
+btn.removeEventListener("click", Handler3);
+*/
 
 
 
-//REMOVING EVENT LISTENERS
+/******************BUTTON FOR CHANGING DARK MODE -> LIGHT MODE**************** */
+/*let modeBtn = document.querySelector("#btn1");
+let currMode = "Light";
 
-//BUT RUN NAHI ZALA
-
-/*let button = document.querySelector("#btn1");
-let = button.addeventListener("click", ()=>{
-    console.log("The Button was clicked");
+modeBtn.addEventListener("click", ()=>{
+    if(currMode === "Light"){
+        currMode = "dark";
+        document.querySelector("body").style.backgroundColor = "black";
+    }
+    else{
+        currMode = "Light";
+        document.querySelector("body").style.backgroundColor = "white";
+    }
+    console.log(currMode);
 });
 */
 
 
 
-//PRACTISE QUESTION Q.1
-//CREATE A BUTTON WHO WILL CHANGE BACKGROUND COLOUR
-
 /*
-let modeBtn = document.querySelector("#mode");
-let currMode = "light";
-
-modeBtn.addEventListener("click", ()=>{
-    if(currMode === "light"){
-        currMode = "dark";
-        document.querySelector("body").style.backgroundColor = "black";
-    }
-    else {
-        currMode = "light";
-        document.querySelector("body").style.backgroundColor = "white";
-    }
-})
-
-console.log("currMode");
+const openBtn = document.getElementById('openModal');
+const closeBtn = document.getElementById('closeModal');
+const modal = document.getElementById('modal');
+const overlay = document.getElementBy
 */
+
+
+/*let promise = new Promise((resolve, reject) => {
+    console.log("I Am Promise\n");
+    resolve("1234");
+});
+
+let promise2 = new Promise((resolve, reject) => {
+    console.log("I Am PRomise 2");
+    reject("1234");
+});*/
+
+
+
+/******BASIC TIME-OUT FUNCTION *******/
+/*console.log("one");
+console.log("two");
+
+setTimeout(() => {
+    console.log("Hellow");
+}, 4000);
+
+console.log("Three");
+console.log("four");*/
+
+
+
+
+/*********@DVANCED JS CONCEPT--->>DEBOUNCING******/
+
+/*const btn = document.querySelector(".increment_btn");
+const btnPress = document.querySelector(".increment pressed");
+const count = document.querySelector(".increment_count");
+
+var pressedCount = 0;
+var triggerCount = 0;
+
+const debouncedCount = _.debounce(() =>{
+    count.innerHTML = ++triggerCount;
+}, 800);
+
+btn.addEventListener("click", ()=>{
+    btnPress.innerHTML = ++pressedCount;
+    debouncedCount();
+})*/
+
+
+
+
+/*******THROTLING*******/
+/*const btn = document.querySelector(".increment_btn");
+const btnPress = document.querySelector(".increment pressed");
+const count = document.querySelector(".increment_count");
+
+var pressedCount = 0;
+var triggerCount = 0;
+
+const start = new Date().getTime();
+
+const throttledCount = _.throttle(()=>{
+
+    const now = new Date().getTime();
+    console.log(now-start);
+    count.innerHTML = ++triggerCount;
+},800);
+
+btn.addEventListener("click", ()=>{
+    btnPress.innerHTML = ++pressedCount;
+    throttledCount();
+});
+*/
+
+
+
+/*function getData(1, ()=>{
+    console.log("getting Data\n");
+    getData2(2,()=>{
+        console.log("Getting another Data\n");
+        getData(3,()=>{
+            console.log("Getting data 1212\n");
+        })
+    });
+});
+*/
+
+
+
+/*const getPromise = {{ => {
+    return new Promise ((resolved, rejected)) =>{
+        console.log("I Am A Promise\n");
+        resolve("sucess");
+    }
+}
+
+}*}*/
+
+
+
+/*****PROMISE CHANING*****/
+/*function getData(dataID){
+    return new Promise (resolve, reject) =>{
+        setTimeout { () =>{
+            console.log("data", dataID);
+            resolve("Sucess");
+        }
+
+        }
+    }
+};*/
+
+
+
+
+/*****ASYNC-AWAIT*****/
+// ASYNC-AWAIT EXAMPLE
+
+// Function that returns a promise
+/*function getWeatherData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Weather Data Fetched");
+            console.log("Jose pedro balmceda pascal");
+            resolve(200);
+        }, 5000);
+    });
+}
+
+// Async function to call the promise
+async function fetchWeather() {
+    let result = await getWeatherData();
+    console.log("Result code:", result);
+}
+
+// Call the async function
+fetchWeather();
+*/
+
+//console.log("my bhubhu is my labubu");
+
+
+
+
+/*************************CLOUSER'S IN J.S************************* */
+/*function main(){
+    const name = "Pata Hai Hum Match Kaha Hare....?";
+
+    function sayMyName(){
+        console.log(name);
+    }
+    sayMyName();
+}
+main();*/
+
+
+
+//EXAMPLE.2
+/*function adder(num){
+    function add(b){
+        console.log(num +  b);
+    }
+    return add;
+}
+
+const outPut = adder(5);
+outPut(2);
+outPut(10);
+*/
+
+
+
+
+
+
+
+
+/**********REAL-LIFE USE CASE***********/
+//EXA.1
+/*const myName = document.getElementById("My-name");
+const btn = document.getElementById("myBtn");
+
+function makeTextSizer(size){
+    function changeSize(){
+        myName.style.fontSize = `${size}px`;
+    }
+    return changeSize;
+}
+
+const size70 = makeTextSizer(70);
+//btn.addEventListener("click", size12);
+//btn.addEventListener("click", size70);*/
+
+
+
+
+
+
+//EXA.2
+//SAME HTML FOR THIS CODE
+/*const myName = document.getElementById("My-name");
+const btn = document.getElementById("myBtn");
+
+function makeCounter(){
+    let count = 1;
+    
+    function increment(){
+        console.log(count++);    
+    }
+    return increment;
+}
+
+const counter1 = makeCounter();
+counter1();
+counter1();
+counter1();
+counter1();
+counter1();*/
