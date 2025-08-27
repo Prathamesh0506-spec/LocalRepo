@@ -1,0 +1,29 @@
+.box1 {
+    height: 100px;
+    width: 100px;
+    border: 1px solid;
+    background-color: aqua;
+}
+
+.content{
+    color: aqua;
+}
+
+.newClass{
+    background-color: bisque;
+}
+
+#box{
+    height: 250px;
+    width: 100px;
+    background-color: dodgerblue;
+    color: aquamarine;
+    border: 1px solid black;
+}
+
+button{
+    height: 50px;
+    width: 50px;
+    background-color: aqua;
+    border: 1px solid black;
+}
