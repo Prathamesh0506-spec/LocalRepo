@@ -1513,3 +1513,208 @@ int main()
     }
     return 0;
 }
+
+
+
+
+
+
+
+/**************** DOUBLY LINKED LIST ***************** */
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;  //*ptr for next
+    struct node *prev;  //*ptr for prev
+};
+struct node *start = NULL;  //BIG PTR
+
+//FUNCTION FOR ADD @T HEAD
+void insertAtHead(){
+    int data;
+    struct node *temp;
+    temp = malloc(sizeof(struct node));
+    printf("Enter A Data To be inserted\n");
+    scanf("%d", &data);
+    temp->prev = NULL;
+    temp->data = data;
+    temp->next = start;
+    if (start != NULL)
+        start->prev = temp;
+    start = temp;
+}
+
+//FUNCTION FOR ADD @T POSITION
+void insertAtpos(){
+    struct node *temp, *newNode;
+    int pos;
+    int i = 1;
+    //CORNER CASE
+    if(start == NULL){
+        printf("\n List Is emepty");
+    }
+    else{
+        printf("Enter A Position\n");
+        scanf("%d", &pos);
+        temp = start;       //STORING HEAD FOR TRAVERSAL
+        while(i<pos-1){
+            temp = temp->next;
+            i++;
+        }
+        newNode = malloc(sizeof(struct node));
+        int data;
+        printf("Enter Number to be inserted\n");
+        scanf("%d", &data);
+        newNode->data = data;
+        newNode->prev = temp;   //LINKAGE FOR PREVIOUS
+        newNode->next = temp->next;     //LINKAGE FOR NEXT
+        if (temp->next != NULL)
+            temp->next->prev = newNode;
+        temp->next = newNode;
+    }
+}
+
+void insertAtEnd(){
+    int data;
+    //CREATING NEW NODE
+    struct node  *temp ,*Atend;
+    Atend = malloc(sizeof(struct node));
+    //TAKING INPUT FROM USER
+    printf("Enter A NUmber to be inserted\n");
+    scanf("%d", &data);
+    //CORNER CASE
+    if(start == NULL){
+        Atend->data = data;
+        Atend->next = NULL;
+        Atend->prev = NULL;
+        start = Atend;
+    }
+    else{
+        //TRAVSERSAL CONDITION
+        temp = start;     //HEAD STORE KARUN GHETLA
+        while(temp->next != NULL){
+            temp = temp->next;
+        }
+        //LINKING PART
+        Atend->next = NULL;     //BY DEFAULT CONDITION
+        Atend->data = data;
+        Atend->prev = temp;
+        temp->next = Atend;
+    }
+}
+
+//DELETE @T FRONT
+void deleAtFront(){
+    //CORNER CASE
+    if(start == NULL){
+        printf("\n list  is emepty");
+    }
+    //ACTUAL LOGIC
+    else{
+        struct node *temp;
+        temp = start;
+        start = start->next;
+        if (start != NULL)
+            start->prev = NULL;
+        free(temp);
+    }
+}
+
+//DELETE @T POSITION
+void deleAtPos(){
+    //CORNER CASE
+    if(start == NULL){
+        printf("\n list is emepty");
+    }
+    //ACTUAL LOGIC
+    else{
+        struct node *temp, *previous;
+        int i = 1,pos;
+        printf("Enter A position\t");
+        scanf("%d", &pos);
+        temp = start;
+        previous = NULL;
+        //TRAVERSAL
+        for(i = 1; i< pos; i++){
+            previous = temp;
+            temp = temp->next;
+        }
+        previous->next = temp->next;
+        if (temp->next != NULL)
+            temp->next->prev = previous;
+        free(temp);
+    }
+}
+
+//FUNC DELETE @T LAST
+void deleAtLast(){
+    struct node *temp, *previous;
+    if(start == NULL){
+        printf("\n list is emepty\t");
+    }
+    else{
+        //HEAD STORE KARNE
+        temp = start;
+        previous = NULL;
+        while(temp->next != NULL){
+            previous = temp;
+            temp= temp->next;
+        }
+        if (previous != NULL)
+            previous->next = NULL;
+        else
+            start = NULL;
+        free(temp);
+    }
+}
+
+//FUNCTION FOR DISPLAY
+void Display(){
+    struct node *temp;
+    temp = start;
+    for(; temp!= NULL;){
+        printf("%d-", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int choice;
+    while(1){
+        printf("\n Enter a choice 1.insertAtFront\n 2.insertAtpos\n 3.insertAtEnd\n 4.deleAtFront\n 5.deleAtPos\n 6.deleAtLast\n 7.Display\n");
+        scanf("%d", &choice);
+        switch(choice){
+
+        case 1: insertAtHead();
+        break;
+
+        case 2: insertAtpos();
+        break;
+
+        case 3: insertAtEnd();
+        break;
+
+        case 4: deleAtFront();
+        break;
+
+        case 5: deleAtPos();
+        break;
+
+        case 6: deleAtLast();
+        break;
+
+        case 7:Display();
+        break;
+
+        case 8: exit(0);
+        break;
+
+        default :printf("You have entered wrong choice");
+        }
+    }
+    return 0;
+}
+
