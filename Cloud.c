@@ -2382,8 +2382,143 @@ void main(){
 
 
 
-/****************TOTAL NO OF EVEN ODD NDOE'S IN  BST'S ***************** */
+/**************** TOTAL NODE'S IN  BST'S ***************** */
 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int cnt = 0;
+//BLUE-PRINT
+struct node{
+int data;
+struct node *left;
+struct node *right;
+} *root = NULL;
+
+//USER DEFINED-DATA TYPE
+struct node *GenrateNode(int data){
+    //MEMORY ALLOCATION
+    struct node *newNode = (struct node*)malloc(sizeof(struct node));
+    if(newNode == NULL){
+        printf("Memory For new node can't be allocated\n");
+        return;
+    }
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+//LOGIC FOR INSERT FUNCTION
+void insert(int data){
+    struct node *new_node;
+    new_node = GenrateNode(data);     //INSERT KARNYASATHI KAHI TARI TAYAR KARUN GHENE
+    if(new_node != NULL){
+        if(root == NULL){
+            root = new_node;
+            printf("\n *node having data %d was inserted\n", data);
+            return;
+        }
+        //JAR ALREADY ROOT KIVA EKHADA NODE EXIT'S KARAT ASEL TAR
+
+        struct node *temp = root;   //-> TRAVERSAL SATHI
+        struct node *prev = NULL;
+        while(temp != NULL){
+            prev = temp;
+            //VALUE COMPARISON KARUN LEFT RIGHT THARVANE
+            if(data > temp-> data){
+                temp = temp->right;
+            }
+            else{
+                temp = temp->left;
+            }
+        }
+        if(data > prev->data){
+            prev->right = new_node;
+        }
+        else{
+            prev->left = new_node;
+        }
+        printf("\n *node having data %d was inserted\n", data);
+    }
+}
+
+//LOGIC FOR DISPLAYING USING IN-ORDER TRAVELSAL
+struct node inorder(struct node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inorder(root->left);
+    printf("%d ",  root->data);
+    inorder(root->right);
+}
+
+
+//LOGIC FOR FINDING TOTAL NODES
+int total_nodes(struct node *root){
+    if (root == NULL)
+    {
+        return;
+    }
+
+total_nodes(root->left);
+cnt++;
+total_nodes(root->right);
+}
+
+void main(){
+    int userChoice;
+    int userActive = 'Y';
+    int data;
+    int num;
+
+
+    while (userActive == 'Y' || userActive == 'y')
+    {
+        printf("\n1. Insert");
+        printf("\n2. InorderDisplay ");
+        printf("\n3. Total Number Of Nodes");
+
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d", &userChoice);
+        printf("\n");
+
+        switch(userChoice)
+        {
+            case 1:
+                printf("Enter A Number\n");
+                scanf("%d", &data);
+                insert(data);
+                break;
+
+             case 2:
+            inorder(root);
+            break;
+
+            case 3: cnt=0;  // FOR EACH CALL COUNT VALUE SHOULD BE RE-INTIALIZED
+            total_nodes(root);
+            printf("The Total No Of Nodes in this BST %d\t", cnt);
+            break;
+
+            default:
+                printf("\n\tInvalid Choice\n");
+                break;
+        }
+         printf("\nDo you want to continue? ");
+         fflush(stdin);
+        scanf("%c", &userActive);
+    }
+
+}
+
+
+
+
+
+/****************TOTAL NO OF EVEN ODD NDOE'S IN  BST'S ***************** */
 
 
 #include <stdio.h>
@@ -2557,134 +2692,3 @@ void main(){
 
 
 
-/**************** TOTAL NODE'S IN  BST'S ***************** */
-
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int cnt = 0;
-//BLUE-PRINT
-struct node{
-int data;
-struct node *left;
-struct node *right;
-} *root = NULL;
-
-//USER DEFINED-DATA TYPE
-struct node *GenrateNode(int data){
-    //MEMORY ALLOCATION
-    struct node *newNode = (struct node*)malloc(sizeof(struct node));
-    if(newNode == NULL){
-        printf("Memory For new node can't be allocated\n");
-        return;
-    }
-    newNode->data = data;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
-}
-
-//LOGIC FOR INSERT FUNCTION
-void insert(int data){
-    struct node *new_node;
-    new_node = GenrateNode(data);     //INSERT KARNYASATHI KAHI TARI TAYAR KARUN GHENE
-    if(new_node != NULL){
-        if(root == NULL){
-            root = new_node;
-            printf("\n *node having data %d was inserted\n", data);
-            return;
-        }
-        //JAR ALREADY ROOT KIVA EKHADA NODE EXIT'S KARAT ASEL TAR
-
-        struct node *temp = root;   //-> TRAVERSAL SATHI
-        struct node *prev = NULL;
-        while(temp != NULL){
-            prev = temp;
-            //VALUE COMPARISON KARUN LEFT RIGHT THARVANE
-            if(data > temp-> data){
-                temp = temp->right;
-            }
-            else{
-                temp = temp->left;
-            }
-        }
-        if(data > prev->data){
-            prev->right = new_node;
-        }
-        else{
-            prev->left = new_node;
-        }
-        printf("\n *node having data %d was inserted\n", data);
-    }
-}
-
-//LOGIC FOR DISPLAYING USING IN-ORDER TRAVELSAL
-struct node inorder(struct node *root)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-    inorder(root->left);
-    printf("%d ",  root->data);
-    inorder(root->right);
-}
-
-
-//LOGIC FOR FINDING TOTAL NODES
-int total_nodes(struct node *root){
-    if (root == NULL)
-    {
-        return;
-    }
-
-total_nodes(root->left);
-cnt++;
-total_nodes(root->right);
-}
-
-void main(){
-    int userChoice;
-    int userActive = 'Y';
-    int data;
-    int num;
-
-
-    while (userActive == 'Y' || userActive == 'y')
-    {
-        printf("\n1. Insert");
-        printf("\n2. InorderDisplay ");
-        printf("\n3. Total Number Of Nodes");
-
-        printf("\n\nEnter Your Choice: ");
-        scanf("%d", &userChoice);
-        printf("\n");
-
-        switch(userChoice)
-        {
-            case 1:
-                printf("Enter A Number\n");
-                scanf("%d", &data);
-                insert(data);
-                break;
-
-             case 2:
-            inorder(root);
-            break;
-
-            case 3: cnt=0;  // FOR EACH CALL COUNT VALUE SHOULD BE RE-INTIALIZED
-            total_nodes(root);
-            printf("The Total No Of Nodes in this BST %d\t", cnt);
-            break;
-
-            default:
-                printf("\n\tInvalid Choice\n");
-                break;
-        }
-         printf("\nDo you want to continue? ");
-         fflush(stdin);
-        scanf("%c", &userActive);
-    }
-
-}
