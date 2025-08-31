@@ -2078,3 +2078,157 @@ void main()
     }
 
 }
+
+
+
+
+/****************SEARCH & DELETE IN BST'S ***************** */
+#include <stdio.h>
+#include <stdlib.h>
+//THIS IS OUR MAIN STRUTURE
+struct node {
+    int data;
+    struct node *right;
+    struct node *left;
+} *root = NULL;    //OBJ OF STRUCTURE
+
+
+//THIS IS STRUCTURES---->>>USER DEFINED DATA TYPE
+struct node* Genrate_node(int data){
+    //MEMORY ALLOCATIONd
+    struct node *new_node = (struct node *)malloc(sizeof(struct node));
+    if(new_node == NULL){
+        printf("Memory For new node can't be allocated\n");
+        return;
+    }
+    new_node->data = data;
+    new_node->left = NULL;
+    new_node->right = NULL;
+    return new_node;
+}
+
+
+//LOGIC FOR INSERT FUNCTION
+void insert(int data){
+    struct node *new_node;
+    new_node = Genrate_node(data);     //INSERT KARNYASATHI KAHI TARI TAYAR KARUN GHENE
+    if(new_node != NULL){
+        if(root == NULL){
+            root = new_node;
+            printf("\n *node having data %d was inserted\n", data);
+            return;
+        }
+        //JAR ALREADY ROOT KIVA EKHADA NODE EXIT'S KARAT ASEL TAR
+
+        struct node *temp = root;   //-> TRAVERSAL SATHI
+        struct node *prev = NULL;
+        while(temp != NULL){
+            prev = temp;
+            //VALUE COMPARISON KARUN LEFT RIGHT THARVANE
+            if(data > temp-> data){
+                temp = temp->right;
+            }
+            else{
+                temp = temp->left;
+            }
+        }
+        if(data > prev->data){
+            prev->right = new_node;
+        }
+        else{
+            prev->left = new_node;
+        }
+        printf("\n *node having data %d was inserted\n", data);
+    }
+}
+
+//LOGIC FOR DISPLAYING USING IN-ORDER TRAVELSAL
+struct node inorder(struct node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inorder(root->left);
+    printf("%d ",  root->data);
+    inorder(root->right);
+}
+
+//LOGIC FOR SEARCHING ELEM
+int Search(struct node *root, int num){
+    if(root == NULL) return;
+    struct node *temp = root;
+    while(temp != NULL){
+        //IF SAME DATA
+        if(num == temp->data){
+            return 1;
+        }
+        //GO TO LEFT SUB-TREE
+        if(num > temp->data){
+            temp = temp->right;
+        }
+        //GO TO RIGHT SUB-TREE
+        if(num < temp->data){
+        temp = temp->left;
+        }
+
+    }
+ // return 0;
+
+}
+void main()
+{
+    int userChoice;
+    int userActive = 'Y';
+    int data;
+    int num;
+
+
+    while (userActive == 'Y' || userActive == 'y')
+    {
+        printf("\n1. Insert");
+        printf("\n2. InorderDisplay ");
+        printf("\n3. Search ");
+
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d", &userChoice);
+        printf("\n");
+
+        switch(userChoice)
+        {
+            case 1:
+                printf("Enter A Number\n");
+                scanf("%d", &data);
+                insert(data);
+                break;
+
+             case 2:
+            inorder(root);
+            break;
+
+
+            case 3:
+            printf("Enter A Number To be Searched\n");
+            scanf("%d", &num);
+            int result;
+            result = Search(root, num);
+                                        printf("%d", result);
+            if(result == 1){
+                printf(" %d\t Is Present In BST\n", num);
+            }
+            else{
+                printf("NOT Found !!");
+            }
+            break;
+
+
+            default:
+                printf("\n\tInvalid Choice\n");
+                break;
+        }
+         printf("\nDo you want to continue? ");
+         fflush(stdin);
+        scanf("%c", &userActive);
+    }
+
+}
