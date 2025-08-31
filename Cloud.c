@@ -1911,3 +1911,170 @@ int main()
  return 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/**********************************<_>--------->UNIT TREE'S/BINARY SEARCH TREE'S<---------<_>****************************** */
+
+
+
+
+/****************BASIC PROGRAMM BST'S ***************** */
+
+#include <stdio.h>
+#include <stdlib.h>
+//THIS IS OUR MAIN STRUTURE
+struct node {
+    int data;
+    struct node *right;
+    struct node *left;
+} *root = NULL;    //OBJ OF STRUCTURE
+
+
+//THIS IS STRUCTURES---->>>USER DEFINED DATA TYPE
+struct node* Genrate_node(int data){
+    //MEMORY ALLOCATIONd
+    struct node *new_node = (struct node *)malloc(sizeof(struct node));
+    if(new_node == NULL){
+        printf("Memory For new node can't be allocated\n");
+        return;
+    }
+    new_node->data = data;
+    new_node->left = NULL;
+    new_node->right = NULL;
+    return new_node;
+}
+
+
+//LOGIC FOR INSERT FUNCTION
+void insert(int data){
+    struct node *new_node;
+    new_node = Genrate_node(data);     //INSERT KARNYASATHI KAHI TARI TAYAR KARUN GHENE
+    if(new_node != NULL){
+        if(root == NULL){
+            root = new_node;
+            printf("\n *node having data %d was inserted\n", data);
+            return;
+        }
+        //JAR ALREADY ROOT KIVA EKHADA NODE EXIT'S KARAT ASEL TAR
+
+        struct node *temp = root;   //-> TRAVERSAL SATHI
+        struct node *prev = NULL;
+        while(temp != NULL){
+            prev = temp;
+            //VALUE COMPARISON KARUN LEFT RIGHT THARVANE
+            if(data > temp-> data){
+                temp = temp->right;
+            }
+            else{
+                temp = temp->left;
+            }
+        }
+        if(data > prev->data){
+            prev->right = new_node;
+        }
+        else{
+            prev->left = new_node;
+        }
+        printf("\n *node having data %d was inserted\n", data);
+    }
+}
+
+
+//LOGIC FOR DISPLAYING USING IN-ORDER TRAVELSAL
+struct node inorder(struct node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inorder(root->left);
+    printf("%d ",  root->data);
+    inorder(root->right);
+}
+
+
+//LOGIC FOR DISPLAYING USING PRE-ORDER TRAVELSAL
+struct node Preorder(struct node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    printf("%d ",  root->data);     //--->>>>IMP
+    inorder(root->left);
+    inorder(root->right);
+}
+
+
+//LOGIC FOR DISPLAYING USING POST-ORDER TRAVELSAL
+struct node Postorder(struct node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inorder(root->left);
+    inorder(root->right);
+    printf("%d ",  root->data);     //--->>>>IMP
+
+}
+
+
+void main()
+{
+    int userChoice;
+    int userActive = 'Y';
+    int data;
+
+
+    while (userActive == 'Y' || userActive == 'y')
+    {
+        printf("\n1. Insert");
+        printf("\n2. InorderDisplay ");
+        printf("\n3. PreorderDisplay ");
+        printf("\n4. PostorderDisplay ");
+
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d", &userChoice);
+        printf("\n");
+
+        switch(userChoice)
+        {
+            case 1:
+                printf("Enter A Number\n");
+                scanf("%d", &data);
+                insert(data);
+                break;
+
+             case 2:
+            inorder(root);
+            break;
+
+            case 3:
+            Preorder(root);
+            break;
+
+            case 4:
+            Postorder(root);
+            break;
+
+
+            default:
+                printf("\n\tInvalid Choice\n");
+                break;
+        }
+         printf("\nDo you want to continue? ");
+         fflush(stdin);
+        scanf("%c", &userActive);
+    }
+
+}
