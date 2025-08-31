@@ -2232,3 +2232,149 @@ void main()
     }
 
 }
+
+
+
+
+
+/****************LARGEST ROOT IN BST'S ***************** */
+#include <stdio.h>
+#include <stdlib.h>
+
+//BLUE-PRINT
+struct node{
+int data;
+struct node *left;
+struct node *right;
+} *root = NULL;
+
+//USER DEFINED-DATA TYPE
+struct node *GenrateNode(int data){
+    //MEMORY ALLOCATION
+    struct node *newNode = (struct node*)malloc(sizeof(struct node));
+    if(newNode == NULL){
+        printf("Memory For new node can't be allocated\n");
+        return;
+    }
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+//LOGIC FOR INSERT FUNCTION
+void insert(int data){
+    struct node *new_node;
+    new_node = GenrateNode(data);     //INSERT KARNYASATHI KAHI TARI TAYAR KARUN GHENE
+    if(new_node != NULL){
+        if(root == NULL){
+            root = new_node;
+            printf("\n *node having data %d was inserted\n", data);
+            return;
+        }
+        //JAR ALREADY ROOT KIVA EKHADA NODE EXIT'S KARAT ASEL TAR
+
+        struct node *temp = root;   //-> TRAVERSAL SATHI
+        struct node *prev = NULL;
+        while(temp != NULL){
+            prev = temp;
+            //VALUE COMPARISON KARUN LEFT RIGHT THARVANE
+            if(data > temp-> data){
+                temp = temp->right;
+            }
+            else{
+                temp = temp->left;
+            }
+        }
+        if(data > prev->data){
+            prev->right = new_node;
+        }
+        else{
+            prev->left = new_node;
+        }
+        printf("\n *node having data %d was inserted\n", data);
+    }
+}
+
+//LOGIC FOR DISPLAYING USING IN-ORDER TRAVELSAL
+struct node inorder(struct node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inorder(root->left);
+    printf("%d ",  root->data);
+    inorder(root->right);
+}
+
+//LOGIC FOR FINDING LARGEST NODE
+int largest_node(struct node *root){
+//TRAVERSAL COND
+struct node *curr = root;
+while(curr != NULL && curr->right !=NULL){
+    curr = curr->right;
+}
+return curr->data;
+};
+
+
+
+//LOGGIC FOR FINDING SMALLEST NODE
+int smallest_node(struct node *root){
+    struct node *curr = root;
+    while(curr != NULL && curr->left !=NULL){
+        curr = curr->left;
+    }
+    return curr->data;
+};
+
+
+void main(){
+    int userChoice;
+    int userActive = 'Y';
+    int data;
+    int num;
+
+
+    while (userActive == 'Y' || userActive == 'y')
+    {
+        printf("\n1. Insert");
+        printf("\n2. InorderDisplay ");
+        printf("\n3. Find Largest Node");
+         printf("\n4. Find Smallest Node");
+
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d", &userChoice);
+        printf("\n");
+
+        switch(userChoice)
+        {
+            case 1:
+                printf("Enter A Number\n");
+                scanf("%d", &data);
+                insert(data);
+                break;
+
+             case 2:
+            inorder(root);
+            break;
+
+            case 3: printf("Largest Node is Equal To %d", largest_node(root));
+
+            break;
+
+            case 4:printf("Largest Node is Equal To %d", smallest_node(root));
+
+            break;
+
+            default:
+                printf("\n\tInvalid Choice\n");
+                break;
+        }
+         printf("\nDo you want to continue? ");
+         fflush(stdin);
+        scanf("%c", &userActive);
+    }
+
+}
