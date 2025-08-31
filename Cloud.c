@@ -2692,3 +2692,175 @@ void main(){
 
 
 
+
+/****************DELETING A NDOE IN BST'S ***************** */
+
+
+#include <stdio.h>
+#include <stdlib.h>
+int key;
+//BLUE-PRINT
+struct node{
+int data;
+struct node *left;
+struct node *right;
+} *root = NULL;
+
+//USER DEFINED-DATA TYPE
+struct node *GenrateNode(int data){
+    //MEMORY ALLOCATION
+    struct node *newNode = (struct node*)malloc(sizeof(struct node));
+    if(newNode == NULL){
+        printf("Memory For new node can't be allocated\n");
+        return;
+    }
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+//LOGIC FOR INSERT FUNCTION
+void insert(int data){
+    struct node *new_node;
+    new_node = GenrateNode(data);     //INSERT KARNYASATHI KAHI TARI TAYAR KARUN GHENE
+    if(new_node != NULL){
+        if(root == NULL){
+            root = new_node;
+            printf("\n *node having data %d was inserted\n", data);
+            return;
+        }
+        //JAR ALREADY ROOT KIVA EKHADA NODE EXIT'S KARAT ASEL TAR
+
+        struct node *temp = root;   //-> TRAVERSAL SATHI
+        struct node *prev = NULL;
+        while(temp != NULL){
+            prev = temp;
+            //VALUE COMPARISON KARUN LEFT RIGHT THARVANE
+            if(data > temp-> data){
+                temp = temp->right;
+            }
+            else{
+                temp = temp->left;
+            }
+        }
+        if(data > prev->data){
+            prev->right = new_node;
+        }
+        else{
+            prev->left = new_node;
+        }
+        printf("\n *node having data %d was inserted\n", data);
+    }
+}
+
+
+// finds the node with the smallest value in BST
+struct node *smallest_node(struct node *root)
+{
+    //WE ARE GOING TO FIND SMALLEST NODE TO MAINTAIN ALIGNMENT OF BST
+    struct node *curr = root;
+    while (curr != NULL && curr->left != NULL)
+   {
+        curr = curr->left;
+    }
+    return curr;
+}
+
+
+
+//LOGIC FOR DISPLAYING USING IN-ORDER TRAVELSAL
+struct node inorder(struct node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inorder(root->left);
+    printf("%d ",  root->data);
+    inorder(root->right);
+}
+
+//LOGIC FOR DELETION
+struct node *delete(struct node *root, int key){
+    if(root == NULL){
+        return root;
+    }
+    //TO CHK LEFT SUB-TREE
+    if(key < root->data){
+        root->left = delete(root->left, key);
+    }
+    //TO CHK RIGHT SUB-TREE
+    else if(key > root->data){
+        root->right = delete(root->right, key);
+    }
+
+    else{
+        //LEFT SIDE LA SINGLE CHILD ASEL TAR
+        if(root->left == NULL){
+            struct node *temp = root->right;
+            free(root);
+            return temp;
+        }
+
+        else if(root->right == NULL){
+            //RIGHT SIDE LA SINGLE CHILD ASEL TAR
+            struct node *temp = root->left;
+            free(root);
+            return temp;
+        }
+        struct node *temp = smallest_node;      //HI SAGLI ZHOL-ZHAL
+        (root->right);                          //BST CHI ALINMENT PROPER RAHAVI MHANUN
+        root->data = temp->data;
+        root->right = delete(root->right, temp->data);
+    }
+    return root;
+}
+
+
+void main(){
+    int userChoice;
+    int userActive = 'Y';
+    int data;
+    int num;
+
+
+    while (userActive == 'Y' || userActive == 'y')
+    {
+        printf("\n1. Insert");
+        printf("\n2. InorderDisplay ");
+        printf("\n3.Delete Node");
+
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d", &userChoice);
+        printf("\n");
+
+        switch(userChoice)
+        {
+            case 1:
+                printf("Enter A Number\n");
+                scanf("%d", &data);
+                insert(data);
+                break;
+
+             case 2:
+            inorder(root);
+            break;
+
+             case 3: delete(root, key);
+                printf("Enter The Value Of Node To Be Delated\n");
+                scanf("%d", &key);
+                root = delete(root, key);
+                break;
+
+
+            default:
+                printf("\n\tInvalid Choice\n");
+                break;
+        }
+         printf("\nDo you want to continue? ");
+         fflush(stdin);
+        scanf("%c", &userActive);
+    }
+
+}
