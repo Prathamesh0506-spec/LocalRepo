@@ -7,7 +7,7 @@
 
 //**********ALL PATHS IN GRAPH BASIC PROGRAMM ***********/
 
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 
 public class allPaths {
     static class edge {
@@ -83,3 +83,4 @@ public class allPaths {
         System.out.println();
     }
 }
+*/
